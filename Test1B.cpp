@@ -17,7 +17,7 @@ struct Target {
     double x,y;
 };
 
-int N=100;  //Lattice Dimension
+int N=1000;  //Lattice Dimension
 const double a = 1.0;  //Target size dimension
 Target t = {N/2+13,N/2}; //Target location
 // number of simulations
