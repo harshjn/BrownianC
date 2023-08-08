@@ -23,7 +23,7 @@ Target t = {N/2+13,N/2};
 // number of simulations
 const int numSimulations = 10;
 const int maxSteps = 1000000;
-const float beta = -1;
+const float beta = 1;
  
 Eigen::SparseMatrix<double> G(N, N);  // initialize a 100x100 sparse matrix
 
@@ -43,7 +43,7 @@ std::uniform_real_distribution<> uniformDist(0, 1);
 
 Walker stepDir(Walker w, Eigen::Matrix3d localWeights) {
     // replace w by e^[beta*w] in the weight matrix.
-    Eigen::Matrix3d funcWeights = localWeights.unaryExpr([](double x) { return std::exp(beta * x); });
+    Eigen::Matrix3d funcWeights = localWeights.unaryExpr([](double x) { return std::exp(-1*beta * x); });
     // a,b,c,d,e,f,g,h,i 9 states and 9 weights
     
     std::vector<int> directions = {-1, 0, 1};
