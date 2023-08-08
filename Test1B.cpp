@@ -6,8 +6,6 @@
 #include <cmath>
 #include <eigen3/Eigen/Dense>
 #include <eigen3/Eigen/Sparse>
-//position of the target, given (50,50) is starting location of walker
-// structure to represent the state of the walker
 
 
 struct Walker {
@@ -33,13 +31,10 @@ double distanceToTarget(Walker w, Target t) {
     return std::sqrt(dx * dx + dy * dy);
 }
 
-
 //Prepare random number generation
 std::random_device rd;
 std::mt19937 gen(rd());
 std::uniform_real_distribution<> uniformDist(0, 1);
-
-
 
 Walker stepDir(Walker w, Eigen::Matrix3d localWeights) {
     // replace w by e^[beta*w] in the weight matrix.
@@ -137,9 +132,7 @@ int main(){
         if (saveTrajectory) {
             trajectoryFile.open("Sim" + std::to_string(i+1) + ".txt");
         }
-    
-    
-    
+        
         while (distanceToTarget(w, t) > a && step < maxSteps) {
             int startX = w.x/1;
             int startY = w.y/1;
