@@ -73,7 +73,7 @@ Uforce = interp1d(rMat_,Uforce_)
 axs[2].plot(rMat/periodR*2*pi,Ufunc_-F0*rMat)
 # We calculate deltaU and the minima position
 
-#%%
+#%% Find minima and maxima
 
 plt.plot(rMat/periodR*2*pi,Ufunc_-F0*rMat)
 xArr=rMat/periodR*2*pi;
@@ -88,3 +88,8 @@ xArr[locMax]
 valMax=xArr[locMax]
 print(f'Location of Minima and maxima is : {valMin,valMax}')
 
+#%% Barrier height
+yArr=Ufunc_-F0*rMat
+Barrier=yArr[locMin[0]+locMax[0]]-yArr[locMin[0]]
+
+print(f'Barrier height is : {Barrier}')
