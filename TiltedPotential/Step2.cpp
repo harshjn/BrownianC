@@ -1,10 +1,3 @@
-// In this code, I am going to look at the variation of the transition times for a tilted potential. I will feed in untilted potential and the force separately. 
-// Step 0 is to generate a potential in python or externally, and find it's barrier height, maxima and minima points. 
-// Step 1 of this code is to take input of a potential and then interpolate it. 
-// Step 2, following that, you have to generate really long N-vector geometry for N-particles. 
-// Step 3, is to use the information about maxima and minima points to generate insights back in python, by analysing the trajectories. 
-//
-
 #include <iostream>
 #include <cmath>
 #include <random>
@@ -21,7 +14,7 @@ const double dt = 1e-1;  // Time step
 const double A = 10 * k_B * T; // 20kbT will be potential depth therefore
 const double dtheta = 1e-5;
 const double F0 = 2.1e-15; // Drive force
-const int nums = 1e7;
+const int nums = 1e8;
 
 
 int main() {
@@ -46,7 +39,7 @@ int main() {
     }
 
     trajFile.close();
-    std::cout << "Data saved to Pot.csv and traj.csv." << std::endl;
+    std::cout << "Data saved to traj.csv." << std::endl;
 
     return 0;
 }
