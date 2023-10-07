@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
 """
+Created on Sat Oct  7 11:13:07 2023
+
+@author: jain_
+"""
+
+# -*- coding: utf-8 -*-
+"""
 Created on Mon Jul  4 14:22:25 2022
 
 @author: jain_
@@ -26,9 +33,6 @@ import matplotlib as mpl
 import math
 import time
 #%%
-nums=int(1e6) # Simulation steps
-dt =100     # Delta t of the simulation (Could be variable)
-nump=20       # number of particles
 F0 = 2.1e-15# Drive force
 T=300         #T #Kelvin is 25degreeCelsius
 eta=8.9e-4    #eta  #kg m^{-1}s^{-1} Dynamic Viscosity of water
@@ -68,3 +72,19 @@ Uforce = interp1d(rMat_,Uforce_)
 
 axs[2].plot(rMat/periodR*2*pi,Ufunc_-F0*rMat)
 # We calculate deltaU and the minima position
+
+#%%
+
+plt.plot(rMat/periodR*2*pi,Ufunc_-F0*rMat)
+xArr=rMat/periodR*2*pi;
+arr=Ufunc_-F0*rMat;
+locMin = np.unravel_index(np.argmin(arr), arr.shape)
+valMin=xArr[locMin]
+arr=arr[locMin[0]:-1]
+xArr = xArr[locMin[0]:]
+
+locMax = np.unravel_index(np.argmax(arr), arr.shape)
+xArr[locMax]
+valMax=xArr[locMax]
+print(f'Location of Minima and maxima is : {valMin,valMax}')
+
